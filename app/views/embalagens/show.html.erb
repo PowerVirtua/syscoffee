@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @embalagem %>
+
+<div>
+  <%= link_to "Edit this embalagem", edit_embalagem_path(@embalagem) %> |
+  <%= link_to "Back to embalagens", embalagens_path %>
+
+  <%= button_to "Destroy this embalagem", @embalagem, method: :delete %>
+</div>

@@ -1,0 +1,2 @@
+class Embalagem < ApplicationRecord
+end

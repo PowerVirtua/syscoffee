@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Embalagens" %>
+
+<h1>Embalagens</h1>
+
+<div id="embalagens">
+  <% @embalagens.each do |embalagem| %>
+    <%= render embalagem %>
+    <p>
+      <%= link_to "Show this embalagem", embalagem %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New embalagem", new_embalagem_path %>
