@@ -1,22 +1,21 @@
-<%= form_with(model: embalagem) do |form| %>
+<%= form_with(model: embalagem, local: true) do |form| %>
   <% if embalagem.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(embalagem.errors.count, "error") %> prohibited this embalagem from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4><%= pluralize(embalagem.errors.count, "erro") %> impediram esta embalagem de ser salva:</h4>
       <ul>
-        <% embalagem.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% embalagem.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
+  <div class="form-group mb-3">
+    <%= form.label :nome, class: "form-label" %>
+    <%= form.text_field :nome, class: "form-control", placeholder: "Digite o nome da embalagem" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="text-start mt-3">
+    <%= form.submit "Salvar", class: "btn btn-success btn-sm w-auto" %>
   </div>
 <% end %>

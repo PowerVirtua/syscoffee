@@ -1,16 +1,36 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <% content_for :title, "Embalagens" %>
+  <h1 class="mb-4">Lista de Embalagens</h1>
 
-<% content_for :title, "Embalagens" %>
-
-<h1>Embalagens</h1>
-
-<div id="embalagens">
-  <% @embalagens.each do |embalagem| %>
-    <%= render embalagem %>
-    <p>
-      <%= link_to "Show this embalagem", embalagem %>
-    </p>
+  <!-- Exibir mensagem de sucesso -->
+  <% if notice %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
   <% end %>
-</div>
 
-<%= link_to "New embalagem", new_embalagem_path %>
+  <!-- Tabela de Embalagens -->
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @embalagens.each do |embalagem| %>
+        <tr>
+          <td><%= embalagem.nome %></td>
+          <td>
+            <%= link_to 'Ver Detalhes', embalagem, class: "btn btn-info btn-sm" %>
+            <%= link_to 'Editar', edit_embalagem_path(embalagem), class: "btn btn-warning btn-sm" %>
+            <%= link_to 'Excluir', embalagem, method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <!-- Botão para Nova Embalagem -->
+  <%= link_to 'Nova Embalagem', new_embalagem_path, class: "btn btn-primary mt-3" %>
+</div>
