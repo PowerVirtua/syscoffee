@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <!-- Mensagem de sucesso -->
+  <% if notice %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <!-- Detalhes da Qualidade -->
+  <div class="card mb-3">
+    <div class="card-body">
+      <%= render @qualidade %>
+    </div>
+  </div>
+
+  <!-- Botões de Ação -->
+  <div class="mt-3">
+    <%= link_to "Editar Qualidade", edit_qualidade_path(@qualidade), class: "btn btn-warning btn-sm" %>
+    <%= link_to "Voltar para Lista", qualidades_path, class: "btn btn-secondary btn-sm" %>
+    <%= button_to "Excluir Qualidade", @qualidade, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
+  </div>
+</div>

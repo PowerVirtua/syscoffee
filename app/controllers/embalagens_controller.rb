@@ -1,6 +1,9 @@
 class EmbalagensController < ApplicationController
   before_action :set_embalagem, only: %i[ show edit update destroy ]
+  
+  # Usando o layout dashboard
   layout 'dashboard'
+  
   # GET /embalagens or /embalagens.json
   def index
     @embalagens = Embalagem.all

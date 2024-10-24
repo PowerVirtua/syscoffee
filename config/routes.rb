@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :qualidades
   resources :embalagens
   get "dashboard/index"
   devise_for :useres

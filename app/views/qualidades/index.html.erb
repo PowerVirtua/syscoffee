@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <% content_for :title, "Lista de Qualidades" %>
+  <h1 class="mb-4">Lista de Qualidades</h1>
+
+  <!-- Tabela de Qualidades -->
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @qualidades.each do |qualidade| %>
+        <tr>
+          <td><%= qualidade.nome %></td>
+          <td>
+            <%= link_to 'Ver Detalhes', qualidade, class: "btn btn-info btn-sm" %>
+            <%= link_to 'Editar', edit_qualidade_path(qualidade), class: "btn btn-warning btn-sm" %>
+            <%= link_to 'Excluir', qualidade, method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <!-- Botão para Nova Qualidade -->
+  <%= link_to 'Nova Qualidade', new_qualidade_path, class: "btn btn-primary mt-3" %>
+</div>

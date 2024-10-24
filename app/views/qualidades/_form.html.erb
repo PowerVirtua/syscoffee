@@ -1,0 +1,21 @@
+<%= form_with(model: qualidade, local: true) do |form| %>
+  <% if qualidade.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(qualidade.errors.count, "erro") %> impediram esta qualidade de ser salva:</h4>
+      <ul>
+        <% qualidade.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mb-3">
+    <%= form.label :nome, class: "form-label" %>
+    <%= form.text_field :nome, class: "form-control", placeholder: "Digite o nome da qualidade" %>
+  </div>
+
+  <div class="text-start mt-3">
+    <%= form.submit "Salvar", class: "btn btn-success btn-sm" %>
+  </div>
+<% end %>
