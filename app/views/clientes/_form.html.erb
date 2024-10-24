@@ -1,0 +1,88 @@
+<%= form_with(model: cliente, local: true) do |form| %>
+  <% if cliente.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(cliente.errors.count, "erro") %> impediram este cliente de ser salvo:</h4>
+      <ul>
+        <% cliente.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <%= form.label :nome, class: "form-label" %>
+      <%= form.text_field :nome, class: "form-control", placeholder: "Digite o nome do cliente" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :sobrenome, class: "form-label" %>
+      <%= form.text_field :sobrenome, class: "form-control", placeholder: "Digite o sobrenome do cliente" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :cpf, class: "form-label" %>
+      <%= form.text_field :cpf, class: "form-control", placeholder: "Digite o CPF" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :celular1, class: "form-label" %>
+      <%= form.text_field :celular1, class: "form-control", placeholder: "Digite o celular 1" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :celular2, class: "form-label" %>
+      <%= form.text_field :celular2, class: "form-control", placeholder: "Digite o celular 2" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :data_cadastro, class: "form-label" %>
+      <%= form.date_field :data_cadastro, class: "form-control" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :rua, class: "form-label" %>
+      <%= form.text_field :rua, class: "form-control", placeholder: "Digite a rua" %>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <%= form.label :numero, class: "form-label" %>
+      <%= form.text_field :numero, class: "form-control", placeholder: "Número" %>
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <%= form.label :complemento, class: "form-label" %>
+      <%= form.text_field :complemento, class: "form-control", placeholder: "Complemento" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :bairro, class: "form-label" %>
+      <%= form.text_field :bairro, class: "form-control", placeholder: "Digite o bairro" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :cidade, class: "form-label" %>
+      <%= form.text_field :cidade, class: "form-control", placeholder: "Digite a cidade" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :estado, class: "form-label" %>
+      <%= form.text_field :estado, class: "form-control", placeholder: "Digite o estado" %>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :email, class: "form-label" %>
+      <%= form.text_field :email, class: "form-control", placeholder: "Digite o e-mail" %>
+    </div>
+
+    <div class="col-md-12 mb-3">
+      <%= form.label :observacao, class: "form-label" %>
+      <%= form.text_area :observacao, class: "form-control", rows: 3, placeholder: "Digite a observação" %>
+    </div>
+  </div>
+
+  <div class="text-start mt-3">
+    <%= form.submit "Salvar", class: "btn btn-success btn-sm" %>
+  </div>
+<% end %>

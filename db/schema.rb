@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_24_001235) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_24_152333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clientes", force: :cascade do |t|
+    t.string "nome"
+    t.string "sobrenome"
+    t.string "cpf"
+    t.string "celular1"
+    t.string "celular2"
+    t.date "data_cadastro"
+    t.string "rua"
+    t.string "numero"
+    t.string "complemento"
+    t.string "bairro"
+    t.string "cidade"
+    t.string "estado"
+    t.string "email"
+    t.text "observacao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "embalagens", force: :cascade do |t|
     t.string "nome", limit: 150

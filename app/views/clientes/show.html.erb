@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <!-- Mensagem de sucesso -->
+  <% if notice %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <!-- Detalhes do Cliente -->
+  <div class="card mb-3">
+    <div class="card-body">
+      <%= render @cliente %>
+    </div>
+  </div>
+
+  <!-- Botões de Ação -->
+  <div class="mt-3">
+    <%= link_to "Editar Cliente", edit_cliente_path(@cliente), class: "btn btn-warning btn-sm" %>
+    <%= link_to "Voltar para Lista", clientes_path, class: "btn btn-secondary btn-sm" %>
+    <%= button_to "Excluir Cliente", @cliente, method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm" %>
+  </div>
+</div>

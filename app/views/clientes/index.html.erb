@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <!-- Mensagem de sucesso -->
+  <% if notice %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <% content_for :title, "Lista de Clientes" %>
+  <h1 class="mb-4">Lista de Clientes</h1>
+
+  <!-- Tabela de Clientes -->
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Celular</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @clientes.each do |cliente| %>
+        <tr>
+          <td><%= cliente.nome %> <%= cliente.sobrenome %></td>
+          <td><%= cliente.cpf %></td>
+          <td><%= cliente.celular1 %></td>
+          <td>
+            <%= link_to 'Ver', cliente, class: "btn btn-info btn-sm" %>
+            <%= link_to 'Editar', edit_cliente_path(cliente), class: "btn btn-warning btn-sm" %>
+            <%= link_to 'Excluir', cliente, method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <!-- Botão para Novo Cliente -->
+  <%= link_to 'Novo Cliente', new_cliente_path, class: "btn btn-primary mt-3" %>
+</div>
