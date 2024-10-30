@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :movimentacoes
   resources :clientes
   resources :qualidades
   resources :embalagens

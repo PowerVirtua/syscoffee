@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Movimentacoes" %>
+
+<h1>Movimentacoes</h1>
+
+<form action="<%= movimentacoes_path %>" method="get">
+  <input type="text" name="q" value="<%= params[:q] %>" />
+  <input type="submit" value="Search" />
+</form>
+
+<div id="movimentacoes">
+  <% @movimentacoes.each do |movimentacao| %>
+    <%= render movimentacao %>
+    <p>
+      <%= link_to "Show this movimentacao", movimentacao %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New movimentacao", new_movimentacao_path %>

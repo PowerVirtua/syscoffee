@@ -1,0 +1,2 @@
+class RelatorioController < ApplicationController
+end

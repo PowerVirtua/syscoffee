@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_24_152333) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_26_133255) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_24_152333) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "movimentacoes", force: :cascade do |t|
+    t.string "codigo_lote"
+    t.string "tipo"
+    t.bigint "cliente_id", null: false
+    t.integer "quantidade_sacas"
+    t.float "peso_total"
+    t.string "localizacao"
+    t.bigint "qualidade_id", null: false
+    t.date "data_cadastro"
+    t.bigint "embalagem_id", null: false
+    t.text "observacao"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_movimentacoes_on_cliente_id"
+    t.index ["embalagem_id"], name: "index_movimentacoes_on_embalagem_id"
+    t.index ["qualidade_id"], name: "index_movimentacoes_on_qualidade_id"
+  end
+
   create_table "qualidades", force: :cascade do |t|
     t.string "nome", limit: 150
     t.datetime "created_at", null: false
@@ -56,4 +74,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_24_152333) do
     t.index ["email"], name: "index_useres_on_email", unique: true
     t.index ["reset_password_token"], name: "index_useres_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "movimentacoes", "clientes"
+  add_foreign_key "movimentacoes", "embalagens"
+  add_foreign_key "movimentacoes", "qualidades"
 end
