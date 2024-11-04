@@ -1,52 +1,24 @@
-<div id="<%= dom_id movimentacao %>">
-  <p>
-    <strong>Codigo lote:</strong>
-    <%= movimentacao.codigo_lote %>
-  </p>
+<div id="<%= dom_id movimentacao %>" class="card mb-4">
+  <div class="card-header">
+    <h5 class="mb-0">Detalhes da Movimentação - Lote: <%= movimentacao.codigo_lote %></h5>
+  </div>
+  <div class="card-body">
+    <p><strong>Tipo:</strong> <%= movimentacao.tipo.capitalize %></p>
 
-  <p>
-    <strong>Tipo:</strong>
-    <%= movimentacao.tipo %>
-  </p>
+    <p><strong>Cliente:</strong> <%= Cliente.find(movimentacao.cliente_id).nome %></p>
 
-  <p>
-    <strong>Cliente:</strong>
-    <%= movimentacao.cliente_id %>
-  </p>
+    <p><strong>Quantidade de Sacas:</strong> <%= movimentacao.quantidade_sacas %></p>
 
-  <p>
-    <strong>Quantidade sacas:</strong>
-    <%= movimentacao.quantidade_sacas %>
-  </p>
+    <p><strong>Peso Total:</strong> <%= movimentacao.peso_total %> kg</p>
 
-  <p>
-    <strong>Peso total:</strong>
-    <%= movimentacao.peso_total %>
-  </p>
+    <p><strong>Localização:</strong> <%= movimentacao.localizacao %></p>
 
-  <p>
-    <strong>Localizacao:</strong>
-    <%= movimentacao.localizacao %>
-  </p>
+    <p><strong>Qualidade:</strong> <%= Qualidade.find(movimentacao.qualidade_id).nome %></p>
 
-  <p>
-    <strong>Qualidade:</strong>
-    <%= movimentacao.qualidade_id %>
-  </p>
+    <p><strong>Data de Cadastro:</strong> <%= movimentacao.data_cadastro.strftime("%d/%m/%Y") %></p>
 
-  <p>
-    <strong>Data cadastro:</strong>
-    <%= movimentacao.data_cadastro %>
-  </p>
+    <p><strong>Embalagem:</strong> <%= Embalagem.find(movimentacao.embalagem_id).nome %></p>
 
-  <p>
-    <strong>Embalagem:</strong>
-    <%= movimentacao.embalagem_id %>
-  </p>
-
-  <p>
-    <strong>Observacao:</strong>
-    <%= movimentacao.observacao %>
-  </p>
-
+    <p><strong>Observação:</strong> <%= movimentacao.observacao %></p>
+  </div>
 </div>

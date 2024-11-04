@@ -1,12 +1,12 @@
-<% content_for :title, "Editing movimentacao" %>
+<% content_for :title, "Editar Movimentação" %>
 
-<h1>Editing movimentacao</h1>
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Editar Movimentação</h1>
 
-<%= render "form", movimentacao: @movimentacao %>
+  <%= render "form", movimentacao: @movimentacao %>
 
-<br>
-
-<div>
-  <%= link_to "Show this movimentacao", @movimentacao %> |
-  <%= link_to "Back to movimentacoes", movimentacoes_path %>
+  <div class="mt-4 text-center">
+    <%= link_to "Visualizar Movimentação", @movimentacao, class: "btn btn-info btn-sm me-2" %>
+    <%= link_to "Voltar para Movimentações", movimentacoes_path, class: "btn btn-secondary btn-sm" %>
+  </div>
 </div>

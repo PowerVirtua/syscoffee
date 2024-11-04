@@ -1,67 +1,74 @@
-<%= form_with(model: movimentacao) do |form| %>
-  <% if movimentacao.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(movimentacao.errors.count, "error") %> prohibited this movimentacao from being saved:</h2>
+<div class="container mt-5">
+  <%= form_with(model: movimentacao, local: true) do |form| %>
+    <% if movimentacao.errors.any? %>
+      <div class="alert alert-danger">
+        <h4><%= pluralize(movimentacao.errors.count, "erro") %> impediram esta movimentação de ser salva:</h4>
+        <ul>
+          <% movimentacao.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-        <% movimentacao.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="row">
+      <!-- Primeira linha: Código do lote, Origem, Tipo -->
+      <div class="col-md-4 mb-3">
+        <%= form.label :codigo_lote, class: "form-label" %>
+        <%= form.text_field :codigo_lote, class: "form-control", placeholder: "Digite o código do lote" %>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <%= form.label :cliente_id, "Origem", class: "form-label" %>
+        <%= form.collection_select :cliente_id, Cliente.all, :id, :nome, { prompt: "Selecione um cliente" }, class: "form-select" %>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <%= form.label :tipo, class: "form-label" %>
+        <%= form.select :tipo, options_for_select([["Entrada", "entrada"], ["Saída", "saida"]]), {}, class: "form-select" %>
+      </div>
+
+      <!-- Segunda linha: Quantidade de sacas, Peso total, Localização -->
+      <div class="col-md-4 mb-3">
+        <%= form.label :quantidade_sacas, class: "form-label" %>
+        <%= form.number_field :quantidade_sacas, class: "form-control", placeholder: "Digite a quantidade de sacas" %>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <%= form.label :peso_total, class: "form-label" %>
+        <%= form.text_field :peso_total, class: "form-control", placeholder: "Digite o peso total" %>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <%= form.label :localizacao, class: "form-label" %>
+        <%= form.text_field :localizacao, class: "form-control", placeholder: "Digite a localização" %>
+      </div>
+
+      <!-- Terceira linha: Qualidade, Embalagem, Data de cadastro -->
+      <div class="col-md-4 mb-3">
+        <%= form.label :qualidade_id, "Qualidade", class: "form-label" %>
+        <%= form.collection_select :qualidade_id, Qualidade.all, :id, :nome, { prompt: "Selecione a qualidade" }, class: "form-select" %>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <%= form.label :embalagem_id, "Embalagem", class: "form-label" %>
+        <%= form.collection_select :embalagem_id, Embalagem.all, :id, :nome, { prompt: "Selecione a embalagem" }, class: "form-select" %>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <%= form.label :data_cadastro, class: "form-label" %>
+        <%= form.date_field :data_cadastro, class: "form-control" %>
+      </div>
+
+      <!-- Quarta linha: Observação -->
+      <div class="col-md-12 mb-3">
+        <%= form.label :observacao, class: "form-label" %>
+        <%= form.text_area :observacao, class: "form-control", rows: 3, placeholder: "Digite a observação" %>
+      </div>
+    </div>
+
+    <div class="text-start mt-3">
+      <%= form.submit "Salvar", class: "btn btn-success btn-sm" %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :codigo_lote, style: "display: block" %>
-    <%= form.text_field :codigo_lote %>
-  </div>
-
-  <div>
-    <%= form.label :tipo, style: "display: block" %>
-    <%= form.text_field :tipo %>
-  </div>
-
-  <div>
-    <%= form.label :cliente_id, style: "display: block" %>
-    <%= form.text_field :cliente_id %>
-  </div>
-
-  <div>
-    <%= form.label :quantidade_sacas, style: "display: block" %>
-    <%= form.number_field :quantidade_sacas %>
-  </div>
-
-  <div>
-    <%= form.label :peso_total, style: "display: block" %>
-    <%= form.text_field :peso_total %>
-  </div>
-
-  <div>
-    <%= form.label :localizacao, style: "display: block" %>
-    <%= form.text_field :localizacao %>
-  </div>
-
-  <div>
-    <%= form.label :qualidade_id, style: "display: block" %>
-    <%= form.text_field :qualidade_id %>
-  </div>
-
-  <div>
-    <%= form.label :data_cadastro, style: "display: block" %>
-    <%= form.date_field :data_cadastro %>
-  </div>
-
-  <div>
-    <%= form.label :embalagem_id, style: "display: block" %>
-    <%= form.text_field :embalagem_id %>
-  </div>
-
-  <div>
-    <%= form.label :observacao, style: "display: block" %>
-    <%= form.text_area :observacao %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

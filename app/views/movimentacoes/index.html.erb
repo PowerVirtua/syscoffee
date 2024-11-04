@@ -1,21 +1,37 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <% content_for :title, "Movimentações" %>
 
-<% content_for :title, "Movimentacoes" %>
+  <h1 class="mb-4 text-center">Movimentações</h1>
 
-<h1>Movimentacoes</h1>
-
-<form action="<%= movimentacoes_path %>" method="get">
-  <input type="text" name="q" value="<%= params[:q] %>" />
-  <input type="submit" value="Search" />
-</form>
-
-<div id="movimentacoes">
-  <% @movimentacoes.each do |movimentacao| %>
-    <%= render movimentacao %>
-    <p>
-      <%= link_to "Show this movimentacao", movimentacao %>
-    </p>
+  <!-- Mensagem de Notificação -->
+  <% if notice %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
   <% end %>
-</div>
 
-<%= link_to "New movimentacao", new_movimentacao_path %>
+  <!-- Campo de Busca -->
+  <form action="<%= movimentacoes_path %>" method="get" class="mb-3 d-flex">
+    <input type="text" name="q" value="<%= params[:q] %>" class="form-control me-2" placeholder="Buscar movimentação" />
+    <button type="submit" class="btn btn-primary">Buscar</button>
+  </form>
+
+  <!-- Botão para Nova Movimentação -->
+  <div class="mb-4">
+    <%= link_to "Nova Movimentação", new_movimentacao_path, class: "btn btn-success btn-sm" %>
+  </div>
+
+  <!-- Listagem de Movimentações -->
+  <div id="movimentacoes">
+    <% @movimentacoes.each do |movimentacao| %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <%= render movimentacao %>
+          <div class="mt-3">
+            <%= link_to "Visualizar", movimentacao, class: "btn btn-info btn-sm me-2" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
