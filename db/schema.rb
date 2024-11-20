@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_26_133255) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_20_224326) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "administradores", force: :cascade do |t|
+    t.string "tipo"
+    t.string "nome"
+    t.string "sobrenome"
+    t.string "identificacao"
+    t.string "celular1"
+    t.string "celular2"
+    t.string "telefone_fixo"
+    t.string "razao_social"
+    t.string "nome_fantasia"
+    t.string "representante_legal"
+    t.date "data_cadastro"
+    t.string "rua"
+    t.string "numero"
+    t.string "complemento"
+    t.string "bairro"
+    t.string "cidade"
+    t.string "estado"
+    t.string "email"
+    t.string "senha"
+    t.string "confirmar_senha"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "clientes", force: :cascade do |t|
     t.string "nome"

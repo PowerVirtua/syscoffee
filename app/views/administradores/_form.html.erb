@@ -1,0 +1,117 @@
+<%= form_with(model: administrador) do |form| %>
+  <% if administrador.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(administrador.errors.count, "error") %> prohibited this administrador from being saved:</h2>
+
+      <ul>
+        <% administrador.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :tipo, style: "display: block" %>
+    <%= form.text_field :tipo %>
+  </div>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label :sobrenome, style: "display: block" %>
+    <%= form.text_field :sobrenome %>
+  </div>
+
+  <div>
+    <%= form.label :identificacao, style: "display: block" %>
+    <%= form.text_field :identificacao %>
+  </div>
+
+  <div>
+    <%= form.label :celular1, style: "display: block" %>
+    <%= form.text_field :celular1 %>
+  </div>
+
+  <div>
+    <%= form.label :celular2, style: "display: block" %>
+    <%= form.text_field :celular2 %>
+  </div>
+
+  <div>
+    <%= form.label :telefone_fixo, style: "display: block" %>
+    <%= form.text_field :telefone_fixo %>
+  </div>
+
+  <div>
+    <%= form.label :razao_social, style: "display: block" %>
+    <%= form.text_field :razao_social %>
+  </div>
+
+  <div>
+    <%= form.label :nome_fantasia, style: "display: block" %>
+    <%= form.text_field :nome_fantasia %>
+  </div>
+
+  <div>
+    <%= form.label :representante_legal, style: "display: block" %>
+    <%= form.text_field :representante_legal %>
+  </div>
+
+  <div>
+    <%= form.label :data_cadastro, style: "display: block" %>
+    <%= form.date_field :data_cadastro %>
+  </div>
+
+  <div>
+    <%= form.label :rua, style: "display: block" %>
+    <%= form.text_field :rua %>
+  </div>
+
+  <div>
+    <%= form.label :numero, style: "display: block" %>
+    <%= form.text_field :numero %>
+  </div>
+
+  <div>
+    <%= form.label :complemento, style: "display: block" %>
+    <%= form.text_field :complemento %>
+  </div>
+
+  <div>
+    <%= form.label :bairro, style: "display: block" %>
+    <%= form.text_field :bairro %>
+  </div>
+
+  <div>
+    <%= form.label :cidade, style: "display: block" %>
+    <%= form.text_field :cidade %>
+  </div>
+
+  <div>
+    <%= form.label :estado, style: "display: block" %>
+    <%= form.text_field :estado %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :senha, style: "display: block" %>
+    <%= form.text_field :senha %>
+  </div>
+
+  <div>
+    <%= form.label :confirmar_senha, style: "display: block" %>
+    <%= form.text_field :confirmar_senha %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
