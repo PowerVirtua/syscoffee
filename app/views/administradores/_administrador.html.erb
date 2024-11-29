@@ -1,102 +1,107 @@
-<div id="<%= dom_id administrador %>">
-  <p>
-    <strong>Tipo:</strong>
-    <%= administrador.tipo %>
-  </p>
-
-  <p>
-    <strong>Nome:</strong>
-    <%= administrador.nome %>
-  </p>
-
-  <p>
-    <strong>Sobrenome:</strong>
-    <%= administrador.sobrenome %>
-  </p>
-
-  <p>
-    <strong>Identificacao:</strong>
-    <%= administrador.identificacao %>
-  </p>
-
-  <p>
-    <strong>Celular1:</strong>
-    <%= administrador.celular1 %>
-  </p>
-
-  <p>
-    <strong>Celular2:</strong>
-    <%= administrador.celular2 %>
-  </p>
-
-  <p>
-    <strong>Telefone fixo:</strong>
-    <%= administrador.telefone_fixo %>
-  </p>
-
-  <p>
-    <strong>Razao social:</strong>
-    <%= administrador.razao_social %>
-  </p>
-
-  <p>
-    <strong>Nome fantasia:</strong>
-    <%= administrador.nome_fantasia %>
-  </p>
-
-  <p>
-    <strong>Representante legal:</strong>
-    <%= administrador.representante_legal %>
-  </p>
-
-  <p>
-    <strong>Data cadastro:</strong>
-    <%= administrador.data_cadastro %>
-  </p>
-
-  <p>
-    <strong>Rua:</strong>
-    <%= administrador.rua %>
-  </p>
-
-  <p>
-    <strong>Numero:</strong>
-    <%= administrador.numero %>
-  </p>
-
-  <p>
-    <strong>Complemento:</strong>
-    <%= administrador.complemento %>
-  </p>
-
-  <p>
-    <strong>Bairro:</strong>
-    <%= administrador.bairro %>
-  </p>
-
-  <p>
-    <strong>Cidade:</strong>
-    <%= administrador.cidade %>
-  </p>
-
-  <p>
-    <strong>Estado:</strong>
-    <%= administrador.estado %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= administrador.email %>
-  </p>
-
-  <p>
-    <strong>Senha:</strong>
-    <%= administrador.senha %>
-  </p>
-
-  <p>
-    <strong>Confirmar senha:</strong>
-    <%= administrador.confirmar_senha %>
-  </p>
-
+<div id="<%= dom_id administrador %>" class="card mb-3 shadow">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">Detalhes do Administrador</h5>
+  </div>
+  <div class="card-body">
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <strong>Tipo:</strong>
+        <p class="form-control-plaintext"><%= administrador.tipo.capitalize %></p>
+      </div>
+      <div class="col-md-6">
+        <strong>Nome:</strong>
+        <p class="form-control-plaintext"><%= administrador.nome %></p>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <strong>Sobrenome:</strong>
+        <p class="form-control-plaintext"><%= administrador.sobrenome %></p>
+      </div>
+      <div class="col-md-6">
+        <strong>Identificação:</strong>
+        <p class="form-control-plaintext"><%= administrador.identificacao %></p>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <strong>Celular 1:</strong>
+        <p class="form-control-plaintext"><%= administrador.celular1 %></p>
+      </div>
+      <div class="col-md-6">
+        <strong>Celular 2:</strong>
+        <p class="form-control-plaintext"><%= administrador.celular2 %></p>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <strong>Telefone Fixo:</strong>
+        <p class="form-control-plaintext"><%= administrador.telefone_fixo %></p>
+      </div>
+      <div class="col-md-6">
+        <strong>Razão Social:</strong>
+        <p class="form-control-plaintext"><%= administrador.razao_social %></p>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <strong>Nome Fantasia:</strong>
+        <p class="form-control-plaintext"><%= administrador.nome_fantasia %></p>
+      </div>
+      <div class="col-md-6">
+        <strong>Representante Legal:</strong>
+        <p class="form-control-plaintext"><%= administrador.representante_legal %></p>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <strong>Data de Cadastro:</strong>
+        <p class="form-control-plaintext"><%= administrador.data_cadastro %></p>
+      </div>
+      <div class="col-md-6">
+        <strong>Rua:</strong>
+        <p class="form-control-plaintext"><%= administrador.rua %></p>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <strong>Número:</strong>
+        <p class="form-control-plaintext"><%= administrador.numero %></p>
+      </div>
+      <div class="col-md-6">
+        <strong>Complemento:</strong>
+        <p class="form-control-plaintext"><%= administrador.complemento %></p>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <strong>Bairro:</strong>
+        <p class="form-control-plaintext"><%= administrador.bairro %></p>
+      </div>
+      <div class="col-md-6">
+        <strong>Cidade:</strong>
+        <p class="form-control-plaintext"><%= administrador.cidade %></p>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <strong>Estado:</strong>
+        <p class="form-control-plaintext"><%= administrador.estado %></p>
+      </div>
+      <div class="col-md-6">
+        <strong>Email:</strong>
+        <p class="form-control-plaintext"><%= administrador.email %></p>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <strong>Senha:</strong>
+        <p class="form-control-plaintext">********</p>
+      </div>
+      <div class="col-md-6">
+        <strong>Confirmar Senha:</strong>
+        <p class="form-control-plaintext">********</p>
+      </div>
+    </div>
+  </div>
 </div>

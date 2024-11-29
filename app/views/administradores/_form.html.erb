@@ -1,117 +1,155 @@
-<%= form_with(model: administrador) do |form| %>
-  <% if administrador.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(administrador.errors.count, "error") %> prohibited this administrador from being saved:</h2>
+<div class="container mt-5">
+  <%= form_with(model: administrador, local: true, class: "needs-validation") do |form| %>
+    <% if administrador.errors.any? %>
+      <div class="alert alert-danger">
+        <h5><%= pluralize(administrador.errors.count, "erro") %> impedem este administrador de ser salvo:</h5>
+        <ul>
+          <% administrador.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-        <% administrador.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :tipo, "Tipo de Cadastro", class: "form-label" %>
+        <%= form.select :tipo, 
+            options_for_select([["Pessoa Física", "CPF"], ["Pessoa Jurídica", "CNPJ"]], selected: administrador.tipo), 
+            {}, 
+            class: "form-select", 
+            id: "tipo-cadastro" %>
+      </div>
+      <div class="col-md-6" id="campo-cpf-cnpj">
+        <%= form.label :identificacao, "CPF ou CNPJ", class: "form-label" %>
+        <%= form.text_field :identificacao, class: "form-control", placeholder: "Digite o CPF ou CNPJ" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :nome, "Nome", class: "form-label" %>
+        <%= form.text_field :nome, class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= form.label :sobrenome, "Sobrenome", class: "form-label" %>
+        <%= form.text_field :sobrenome, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :celular1, "Celular 1", class: "form-label" %>
+        <%= form.text_field :celular1, class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= form.label :celular2, "Celular 2", class: "form-label" %>
+        <%= form.text_field :celular2, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :telefone_fixo, "Telefone Fixo", class: "form-label" %>
+        <%= form.text_field :telefone_fixo, class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= form.label :razao_social, "Razão Social", class: "form-label" %>
+        <%= form.text_field :razao_social, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :nome_fantasia, "Nome Fantasia", class: "form-label" %>
+        <%= form.text_field :nome_fantasia, class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= form.label :representante_legal, "Representante Legal", class: "form-label" %>
+        <%= form.text_field :representante_legal, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <%= form.label :data_cadastro, "Data de Cadastro", class: "form-label" %>
+        <%= form.date_field :data_cadastro, class: "form-control" %>
+      </div>
+      <div class="col-md-8">
+        <%= form.label :rua, "Rua", class: "form-label" %>
+        <%= form.text_field :rua, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <%= form.label :numero, "Número", class: "form-label" %>
+        <%= form.text_field :numero, class: "form-control" %>
+      </div>
+      <div class="col-md-8">
+        <%= form.label :complemento, "Complemento", class: "form-label" %>
+        <%= form.text_field :complemento, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <%= form.label :bairro, "Bairro", class: "form-label" %>
+        <%= form.text_field :bairro, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :cidade, "Cidade", class: "form-label" %>
+        <%= form.text_field :cidade, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :estado, "Estado", class: "form-label" %>
+        <%= form.text_field :estado, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :email, "Email", class: "form-label" %>
+        <%= form.email_field :email, class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= form.label :senha, "Senha", class: "form-label" %>
+        <%= form.password_field :senha, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <%= form.label :confirmar_senha, "Confirmar Senha", class: "form-label" %>
+        <%= form.password_field :confirmar_senha, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <%= form.submit "Salvar", class: "btn btn-primary" %>
     </div>
   <% end %>
+</div>
 
-  <div>
-    <%= form.label :tipo, style: "display: block" %>
-    <%= form.text_field :tipo %>
-  </div>
+<script>
+  // JavaScript para exibir/ocultar o campo CPF ou CNPJ com base na seleção
+  document.addEventListener("DOMContentLoaded", () => {
+    const tipoCadastro = document.getElementById("tipo-cadastro");
+    const campoCpfCnpj = document.getElementById("campo-cpf-cnpj");
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
-  </div>
+    tipoCadastro.addEventListener("change", () => {
+      const tipo = tipoCadastro.value;
+      if (tipo === "CPF") {
+        campoCpfCnpj.querySelector("label").textContent = "CPF";
+        campoCpfCnpj.querySelector("input").placeholder = "Digite o CPF";
+      } else if (tipo === "CNPJ") {
+        campoCpfCnpj.querySelector("label").textContent = "CNPJ";
+        campoCpfCnpj.querySelector("input").placeholder = "Digite o CNPJ";
+      }
+    });
 
-  <div>
-    <%= form.label :sobrenome, style: "display: block" %>
-    <%= form.text_field :sobrenome %>
-  </div>
-
-  <div>
-    <%= form.label :identificacao, style: "display: block" %>
-    <%= form.text_field :identificacao %>
-  </div>
-
-  <div>
-    <%= form.label :celular1, style: "display: block" %>
-    <%= form.text_field :celular1 %>
-  </div>
-
-  <div>
-    <%= form.label :celular2, style: "display: block" %>
-    <%= form.text_field :celular2 %>
-  </div>
-
-  <div>
-    <%= form.label :telefone_fixo, style: "display: block" %>
-    <%= form.text_field :telefone_fixo %>
-  </div>
-
-  <div>
-    <%= form.label :razao_social, style: "display: block" %>
-    <%= form.text_field :razao_social %>
-  </div>
-
-  <div>
-    <%= form.label :nome_fantasia, style: "display: block" %>
-    <%= form.text_field :nome_fantasia %>
-  </div>
-
-  <div>
-    <%= form.label :representante_legal, style: "display: block" %>
-    <%= form.text_field :representante_legal %>
-  </div>
-
-  <div>
-    <%= form.label :data_cadastro, style: "display: block" %>
-    <%= form.date_field :data_cadastro %>
-  </div>
-
-  <div>
-    <%= form.label :rua, style: "display: block" %>
-    <%= form.text_field :rua %>
-  </div>
-
-  <div>
-    <%= form.label :numero, style: "display: block" %>
-    <%= form.text_field :numero %>
-  </div>
-
-  <div>
-    <%= form.label :complemento, style: "display: block" %>
-    <%= form.text_field :complemento %>
-  </div>
-
-  <div>
-    <%= form.label :bairro, style: "display: block" %>
-    <%= form.text_field :bairro %>
-  </div>
-
-  <div>
-    <%= form.label :cidade, style: "display: block" %>
-    <%= form.text_field :cidade %>
-  </div>
-
-  <div>
-    <%= form.label :estado, style: "display: block" %>
-    <%= form.text_field :estado %>
-  </div>
-
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div>
-    <%= form.label :senha, style: "display: block" %>
-    <%= form.text_field :senha %>
-  </div>
-
-  <div>
-    <%= form.label :confirmar_senha, style: "display: block" %>
-    <%= form.text_field :confirmar_senha %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    // Definir o estado inicial com base no valor carregado
+    const event = new Event("change");
+    tipoCadastro.dispatchEvent(event);
+  });
+</script>

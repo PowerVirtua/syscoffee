@@ -1,6 +1,9 @@
 class AdministradoresController < ApplicationController
   before_action :set_administrador, only: %i[ show edit update destroy ]
 
+  # Usando o layout dashboard
+  layout 'dashboard'
+  
   # GET /administradores or /administradores.json
   def index
     @administradores = Administrador.all
